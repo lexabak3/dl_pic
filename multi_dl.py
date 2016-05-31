@@ -1,7 +1,7 @@
 import asyncio
 import aiohttp
 from fun import *
-NAME20_CC = ('21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40').split()
+NAME20_CC = [str(x+1) for x in range(20)]
 
 
 @asyncio.coroutine
@@ -30,9 +30,9 @@ def multi_download_many(cc_list):
     return len(res)
 
 
-def multi_main(download_many):
+def multi_main(download_many, pic_name=NAME20_CC):
     t0 = time.time()
-    count = download_many(NAME20_CC)
+    count = download_many(pic_name)
     elapsed = time.time() - t0
     msg = '\n{} pic downloaded in {:.2f}s'
     print(msg.format(count, elapsed))
